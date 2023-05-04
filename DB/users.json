@@ -1,24 +1,88 @@
 [{
-    "_id" : 1,
-    "email" : "user@gmail.com",
-    "user" : "user",
-    "pwd" : "pwd"
+    "_id": 1,
+    "email": "user@gmail.com",
+    "user": "user",
+    "pwd": "pwd"
 },
 {
-    "_id" : 2,
-    "email" : "user1@gmail.com",
-    "user" : "gianni",
-    "pwd" : "ottimista"
+    "_id": 3,
+    "email": "user2@gmail.com",
+    "user": "stella",
+    "pwd": "bella"
 },
 {
-    "_id" : 3,
-    "email" : "user2@gmail.com",
-    "user" : "stella",
-    "pwd" : "bella"
+    "_id": 4,
+    "email": "user3@gmail.com",
+    "user": "gino",
+    "pwd": "latino"
 },
 {
-    "_id" : 4,
-    "email" : "user3@gmail.com",
-    "user" : "gino",
-    "pwd" : "latino"
+    "_id": 2,
+    "email": "user1@gmail.com",
+    "user": "gianni",
+    "pwd": "ottimista"
+},
+{
+    "_id": {
+        "$oid": "6450c8607b672d4aacb82c0d"
+    },
+    "user": "pluto",
+    "pwd": "1234",
+    "email": "pluto@gmail.com"
+},
+{
+    "_id": {
+        "$oid": "6450c8d8cb8dac5e6ca38263"
+    },
+    "user": "minnie",
+    "email": "minnie@gmail.com",
+    "pwd": "1234"
+},
+{
+    "_id": {
+        "$oid": "6450d2dc3244f146501b5c21"
+    },
+    "email": "seminara@gmail.com",
+    "user": "Seminara12",
+    "pwd": "1234"
+},
+{
+    "_id": {
+        "$oid": "6450d2fd3244f146501b5c22"
+    },
+    "email": "seminara@gmail.com",
+    "user": "seminara24",
+    "pwd": "1234"
+},
+{
+    "_id": {
+        "$oid": "6450ec7d88fab065881bb917"
+    },
+    "email": "pippo@gmail.com",
+    "user": "pippo",
+    "pwd": "1234"
+},
+{
+    "_id": {
+        "$oid": "6450f0bc88fab065881bb918"
+    },
+    "email": "sordo@gmail.com",
+    "user": "sordo",
+    "pwd": "1234"
+},
+{
+    "_id": {
+        "$oid": "64523ca88347d6bffcdcaf9e"
+    },
+    "email": "mauroracca72@gmail.com",
+    "user": "mauro_racca",
+    "pwd": "Aspettare400_"
+},
+{
+    "_id": {
+        "$oid": "6452931899155a598c60bd73"
+    },
+    "email": "cristinabertolino65@gmail.com",
+    "user": "cristina_bertolino",
+    "pwd": "Aspettare400_"
 }]

@@ -66,6 +66,17 @@ app.post("/api/registrati", function (req, res) {
     });
 });
 
+app.post("/api/posts", function (req, res) {
+    let query = { user: req.body.userModal , type: req.body.typeModal ,content: req.body.contentModal };
+    mongoFunctions.registrati(req, "ports", "posts", query, function (err, data) {
+        if (err.codeErr == -1) {
+            res.send({ msg: "ok" });
+        }
+        else
+            error(req, res, { code: err.codeErr, message: err.message });
+    });
+});
+
 
 
 

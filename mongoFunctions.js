@@ -95,7 +95,35 @@ mongoFunctions.prototype.registrati = function (req, nomeDb, collection, query, 
 
         } else
             callback(errConn, {});
+            
     });
+
+}
+
+mongoFunctions.prototype.posts = function (req, nomeDb, collection, query, callback) {
+    setConnection(nomeDb, collection, function (errConn, coll, conn) {
+        if (errConn.codeErr == -1) {
+            let dataReg = coll.insertOne(query);
+            dataReg.then(function (data) {
+                conn.close();
+                let errData;
+                if (data == null)
+                    errData = { codeErr: 401, message: "Inserisci Qualcosa almeno..." };
+                else {
+                    errData = { codeErr: -1, message: "" };
+                }
+                callback(errData, data);
+            });
+            dataReg.catch((err) => {
+                let errQuery = { codeErr: 500, message: "Errore durante l'esecuzione della query" };
+                callback(errQuery, {});
+            });
+
+        } else
+            callback(errConn, {});
+            
+    });
+
 }
 
 module.exports = new mongoFunctions();

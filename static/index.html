@@ -187,19 +187,21 @@ aria-hidden="true">
 					<div class="form-group">
                         <label class="control-label">Tipo di libro</label>
                         <div>
-                            <input type="text" class="form-control input-lg" name="book" value="">
+                            <input type="text" class="form-control input-lg" name="typeModal" value="">
                         </div>
                     </div>
 					<div class="form-group">
                         <label class="control-label">Pubblica il tuo annuncio (scrivi nei dettagli cosa proponi!)</label>
-                        <div>
-                            <textarea class="form-control input-lg" name="email" value="">
-							</textarea>
-                        </div>
+                        <form name="myform">
+							<input class="form-control input-lg" style="height: 80px;" name="limitedtextfield" type="text" onKeyDown="limitText(this.form.limitedtextfield,this.form.countdown,100);" 
+							onKeyUp="limitText(this.form.limitedtextfield,this.form.countdown,100);" maxlength="100"><br>
+							<font size="1">(Maximum characters: 100)<br>
+							You have <input readonly type="text" name="countdown" size="3" value="100"> characters left.</font>
+							</form>
                     </div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn btn-primary" id="btnSubPost">Posta Annuncio</button>
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 				</div>
 			</div>
