@@ -14,7 +14,7 @@ $(()=>{
             console.log("NEW TOKEN: " + serverData.token);
             localStorage.setItem("token", serverData.token);
             localStorage.setItem("username",username);
-            window.location.href="index.html";
+            window.location.href="main.html";
         });
     });
     let cont = 0

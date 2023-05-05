@@ -113,13 +113,13 @@ mongoFunctions.prototype.findMail = function (req, nomeDb, collection, query, ca
                 conn.close();
                 let errData;
                 if (data == null)
-                    errData = { codeErr: 401, message: "Mail non presente" };
+                    errData = { codeErr: 401, message: "Mail non presente" };   
                 else
-                errData = { codeErr: -1, message: "Mail presente" };
+                    errData = { codeErr: -1, message: "Mail presente", elencoDomande: data };
                
                 callback(errData, data);
             });
-            dataLogin.catch((err) => {
+            dataMail.catch((err) => {
                 let errQuery = { codeErr: 500, message: "Errore durante l'esecuzione della query" };
                 callback(errQuery, {});
             });

@@ -49,7 +49,7 @@ $(document).ready(function () {
     });
     Reg.done(function (serverData) {
       alert("Annuncio pubblicato correttamente, ora mi aggiorno!");
-      window.location.href = "index.html";
+      window.location.href = "main.html";
     });
   });
 

@@ -10,6 +10,7 @@ let mongoFunctions = require("./mongoFunctions");
 let nodemailer = require("nodemailer");
 let app = express();
 let port = 8888;
+let i = 0;
 
 const privateKey = fs.readFileSync("keys/privateKey.pem", "utf8");
 const certificate = fs.readFileSync("keys/certificate.crt", "utf8");
@@ -94,7 +95,7 @@ app.post("/api/registrati", function (req, res) {
             error(req, res, { code: err.codeErr, message: err.message });
     });
 });
-let i = 0;
+
 app.post("/api/posts", function (req, res) {
     
     let query = {idPost : i, user: req.body.userModal , type: req.body.typeModal ,content: req.body.contentModal };
