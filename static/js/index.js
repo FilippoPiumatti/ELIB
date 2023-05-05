@@ -14,11 +14,26 @@ $(document).ready(function () {
   //#endregion
 
   //#region .on functions
+
   $("#modalPush").modal("show");
 
   $("yes").on("click", function () {
-    $("#modalPush").modal('hide')
+    let gestPushNotification = sendRequestNoCallback("/api/getUser", "GET", {})
+
+    gestPushNotification.fail(function (jqXHR) {
+      $(".msg").html("Error: " + jqXHR.status + " - " + jqXHR.responseText).css({ color: "#a00", "marginBottom": "10px" });
+    });
+
+    gestPushNotification.done(function(serverData){
+      serverData = JSON.parse(serverData);
+      console.log(serverData);
+    })
+
   });
+
+  $("no").on("click", function(){
+    $("modalPush").modal('hide');
+  })
 
   $("#UserDetails").hide(300);
   $("#libri").show(300);
@@ -27,7 +42,7 @@ $(document).ready(function () {
   $("#btnSubPost").on("click", function () {
     let username = $("input[name=usernameModal]").val();
     let tipo = $("input[name=typeModal]").val();
-    let content = $("input[name=contentModal]").val();
+    let content = $("input[name=limitedtextfield]").val();
     let Reg = sendRequestNoCallback("/api/posts", "POST", { userModal: username, typeModal: tipo, contentModal: content });
     Reg.fail(function (jqXHR) {
       $(".msg").html("Error: " + jqXHR.status + " - " + jqXHR.responseText).css({ color: "#a00", "marginBottom": "10px" });
@@ -44,7 +59,7 @@ $(document).ready(function () {
   })
 
 
- 
+
 
   $("#logout").on("click", function () {
     let isExecuted = confirm("Sei sicuro di voler uscire?");
@@ -65,12 +80,12 @@ $(document).ready(function () {
     $("#exampleModalCenter").show();
     $("body").css("backgorund-color", "black");
   })
-  $("input[name=contentModal]").on("keydown",limitText($("#contentLimit"),"",100))
+  $("input[name=contentModal]").on("keydown", limitText($("#contentLimit"), "", 100))
   //#endregion
 
   //#region addEvent
   let btnPost = document.getElementById("btnSubPost");
-  btnPost.addEventListener("keypress",function(event){
+  btnPost.addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
       // Cancel the default action, if needed
       event.preventDefault();
@@ -84,11 +99,11 @@ $(document).ready(function () {
 //#region Outsides Functions!!
 
 function limitText(limitField, limitCount, limitNum) {
-	if (limitField.value.length > limitNum) {
-		limitField.value = limitField.value.substring(0, limitNum);
-	} else {
-		limitCount.value = limitNum - limitField.value.length;
-	}
+  if (limitField.value.length > limitNum) {
+    limitField.value = limitField.value.substring(0, limitNum);
+  } else {
+    limitCount.value = limitNum - limitField.value.length;
+  }
 };
 
 //#endregion

@@ -35,7 +35,9 @@ $(()=>{
             $(".msg").html("Error: " + jqXHR.status + " - " + jqXHR.responseText).css({color:"#a00","marginBottom":"10px"});
         });
         Reg.done(function (serverData){
+            
             window.location.href="login.html";
+            alert(serverData)
         });
     })
 });

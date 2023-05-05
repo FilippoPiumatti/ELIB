@@ -55,19 +55,33 @@ app.post("/api/login", function (req, res) {
     });
 });
 
-app.post("/api/registrati", function (req, res) {
-    let query = { email: req.body.email , user: req.body.username2 ,pwd: req.body.password2 };
-    mongoFunctions.registrati(req, "ports", "users", query, function (err, data) {
+
+app.get("/api/getUser", function (req, res) {
+    mongoFunctions.findLogin(req, "ports", "users", {}, function (err, data) {
         if (err.codeErr == -1) {
-            res.send({ msg: "ok" });
+            console.log("ELENCO USERS: ");
+            res.send({ msg: "Login OK"});
         }
         else
             error(req, res, { code: err.codeErr, message: err.message });
     });
 });
 
+
+app.post("/api/registrati", function (req, res) {
+    let query = { email: req.body.email , user: req.body.username2 ,pwd: req.body.password2, PushNotification: false };
+    mongoFunctions.registrati(req, "ports", "users", query, function (err, data) {
+        if (err.codeErr == -1) {
+            res.send(data);
+        }
+        else
+            error(req, res, { code: err.codeErr, message: err.message });
+    });
+});
+let i = 0;
 app.post("/api/posts", function (req, res) {
-    let query = { user: req.body.userModal , type: req.body.typeModal ,content: req.body.contentModal };
+    
+    let query = {idPost : i, user: req.body.userModal , type: req.body.typeModal ,content: req.body.contentModal };
     mongoFunctions.registrati(req, "ports", "posts", query, function (err, data) {
         if (err.codeErr == -1) {
             res.send({ msg: "ok" });
@@ -75,6 +89,16 @@ app.post("/api/posts", function (req, res) {
         else
             error(req, res, { code: err.codeErr, message: err.message });
     });
+    i++;
+});
+
+app.post("api/getPosts",function(req,res){
+    let query = {};
+    mongoFunctions.getPosts(req, "ports", "posts", query, function (err, data){
+        if (err.codeErr == -1) {
+            res.send({msg:"elenco post",domande: data})
+        }
+    })
 });
 
 
