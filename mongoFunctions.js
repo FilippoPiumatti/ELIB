@@ -104,6 +104,32 @@ mongoFunctions.prototype.findLogin = function (req, nomeDb, collection, query, c
     });
 }
 
+
+mongoFunctions.prototype.findMail = function (req, nomeDb, collection, query, callback) {
+    setConnection(nomeDb, collection, function (errConn, coll, conn) {
+        if (errConn.codeErr == -1) {
+            let dataMail = coll.findOne(query);
+            dataMail.then(function (data) {
+                conn.close();
+                let errData;
+                if (data == null)
+                    errData = { codeErr: 401, message: "Mail non presente" };
+                else
+                errData = { codeErr: -1, message: "Mail presente" };
+               
+                callback(errData, data);
+            });
+            dataLogin.catch((err) => {
+                let errQuery = { codeErr: 500, message: "Errore durante l'esecuzione della query" };
+                callback(errQuery, {});
+            });
+            
+        } else
+            callback(errConn, {});
+    });
+}
+
+
 mongoFunctions.prototype.registrati = function (req, nomeDb, collection, query, callback) {
     setConnection(nomeDb, collection, function (errConn, coll, conn) {
         if (errConn.codeErr == -1) {

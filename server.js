@@ -56,6 +56,22 @@ app.post("/api/login", function (req, res) {
 });
 
 
+app.post("/api/controlloMail", function (req, res) {
+    let query = { email: req.body.mail };
+    
+    mongoFunctions.findMail(req, "ports", "users", query, function (err, data) {
+        if (err.codeErr == -1) {
+            console.log("Login OK");
+            tokenAdministration.createToken(data);
+            console.log("tokenAdministration.token = " + tokenAdministration.token);
+            res.send({ msg: "Mail OK", token: tokenAdministration.token });
+        }
+        else
+            error(req, res, { code: err.codeErr, message: err.message });
+    });
+});
+
+
 app.get("/api/getUser", function (req, res) {
     mongoFunctions.findLogin(req, "ports", "users", {}, function (err, data) {
         if (err.codeErr == -1) {
