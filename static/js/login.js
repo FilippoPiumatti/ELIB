@@ -37,7 +37,6 @@ $(()=>{
         Reg.done(function (serverData){
             
             window.location.href="login.html";
-            alert(serverData)
         });
     })
 });

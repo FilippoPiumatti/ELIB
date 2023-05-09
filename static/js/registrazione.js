@@ -1,7 +1,7 @@
-"Use strict"
+/*"Use strict"
 $(document).ready(function () {
 
-    /*$("#btnLogBack").on("click", function () {
+    $("#btnLogBack").on("click", function () {
         window.location.href = "login.html"
     });
 
@@ -15,5 +15,5 @@ $(document).ready(function () {
         Reg.done(function (serverData) {
             window.location.href = "login.html";
         });
-    })*/
-})
+    })
+})*/
