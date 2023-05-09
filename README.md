@@ -23,7 +23,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+
 
 
 
@@ -39,10 +39,10 @@
   <p align="center">
     Un applicazione multipage che consente ai vari appassionati di lettura di condividere le proprie opinioni sui libri e scambiarseli tra di loro!
     <br />
-    <a href="https://github.com/FilippoPiumatti/ELIB"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/FilippoPiumatti/ELIB"><strong>Entra nel REPO</strong></a>
     <br />
     <br />
-    <a href="https://github.com/FilippoPiumatti/ELIB">View Demo</a>
+    <a href="https://github.com/FilippoPiumatti/ELIB">DEMO</a>
   </p>
 </div>
 
@@ -50,19 +50,19 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>CONTENUTI</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
+      <a href="#about-the-project">IL PROGETTO</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#built-with">Abbiamo usato</a></li>
       </ul>
     </li>
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#prerequisites">Prerequisiti</a></li>
+        <li><a href="#installation">Installazioni varie</a></li>
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
@@ -79,9 +79,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
+[![Product Name Screen Shot][product-screenshot]]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -117,16 +115,13 @@ Installa express e mongoDB nella tua applicazione NODE
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/FilippoPiumatti/ELIB.git
    ```
 2. Install NPM packages
    ```sh
    npm install
    ```
-3. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+3. write node server in your terminal to get started with the App
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -179,20 +174,10 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/FilippoPiumatti/ELIB](https://github.com/FilippoPiumatti/ELIB)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
