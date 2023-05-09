@@ -115,8 +115,30 @@ mongoFunctions.prototype.findMail = function (req, nomeDb, collection, query, ca
                 if (data == null)
                     errData = { codeErr: 401, message: "Mail non presente" };   
                 else
+                    errData = { codeErr: -1, message: "Mail presente", mail:data };
                     errData = { codeErr: -1, message: "Mail presente", elencoDomande: data };
                
+                callback(errData, data);
+            });
+            dataMail.catch((err) => {
+                let errQuery = { codeErr: 500, message: "Errore durante l'esecuzione della query" };
+                callback(errQuery, {});
+            });
+            
+        } else
+            callback(errConn, {});
+    });
+}
+
+mongoFunctions.prototype.updatePassword = function (req, nomeDb, collection, mail,password, callback) {
+    setConnection(nomeDb, collection, function (errConn, coll, conn) {
+        if (errConn.codeErr == -1) {
+            let dataMail = coll.updateOne(mail,{$set:password});
+            //db.players.updateOne({_id:11,"infortuni.anno":2012,"infortuni.tipo":"gomito"},{$set:{"infortuni.$.mesi_out":0}})
+            dataMail.then(function (data) {
+                conn.close();
+                let errData;
+                
                 callback(errData, data);
             });
             dataMail.catch((err) => {

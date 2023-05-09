@@ -65,7 +65,23 @@ app.post("/api/controlloMail", function (req, res) {
             console.log("Login OK");
             tokenAdministration.createToken(data);
             console.log("tokenAdministration.token = " + tokenAdministration.token);
-            res.send({ msg: "Mail OK", token: tokenAdministration.token });
+            res.send({ msg: "Mail OK", token: tokenAdministration.token,mail:req.body.mail });
+        }
+        else
+            error(req, res, { code: err.codeErr, message: err.message });
+    });
+});
+
+app.post("/api/resetPassword", function (req, res) {
+    let email = { email: req.body.mail };
+    let newPassword={ password: req.body.password };
+    
+    mongoFunctions.updatePassword(req, "ports", "users", email,newPassword, function (err, data) {
+        if (err.codeErr == -1) {
+            console.log("Update OK");
+            tokenAdministration.createToken(data);
+            console.log("tokenAdministration.token = " + tokenAdministration.token);
+            res.send({ msg: "Mail OK", token: tokenAdministration.token,mail:req.body.mail });
         }
         else
             error(req, res, { code: err.codeErr, message: err.message });
