@@ -142,9 +142,9 @@ Ecco tutti i prerequisiti che devi avere
 <!-- CONTACT -->
 ## Contatti
 
-Piumatti Filippo e Seminara Andrea - [@your_twitter](https://instagram/aka_freeezy) - email@example.com
+Piumatti Filippo e Seminara Andrea
 
-link del progetto: [https://github.com/your_username/repo_name](https://github.com/FilippoPiumatti/ELIB)
+link del progetto: [https://github.com/FilippoPiumatti/ELIB]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
