@@ -54,7 +54,7 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Indice</summary>
   <ol>
     <li>
       <a href="#about-the-project">Progetto</a>
@@ -80,7 +80,7 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Sul progetto
 
 [![Product Name Screen Shot][product-screenshot]](https://google.com)
 
@@ -93,7 +93,7 @@ quindi siamo arrivati alla conclusione di voler sviluppare E-LIBRARIUM, il nome 
 
 
 
-### Built With
+### Tecnologie
 
 Di seguito puoi trovare le tecnologie che abbiamo utilizzato per sviluppare l'App
 * [![Bootstrap][Bootstrap.com]][Bootstrap-url]
@@ -103,11 +103,11 @@ Di seguito puoi trovare le tecnologie che abbiamo utilizzato per sviluppare l'Ap
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## Per Partire
 
 Qui ce una semplice guida di come far partire il progetto:
 
-### Prerequisites
+### Prerequisiti
 
 Ecco tutti i prerequisiti che devi avere
 * "dependencies": {
@@ -138,7 +138,7 @@ Ecco tutti i prerequisiti che devi avere
 
 
 <!-- CONTACT -->
-## Contact
+## Contatti
 
 Piumatti Filippo e Seminara Andrea - [@your_twitter](https://instagram/aka_freeezy) - email@example.com
 
