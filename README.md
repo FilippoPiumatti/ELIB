@@ -126,6 +126,9 @@ Ecco tutti i prerequisiti che devi avere
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<a href="https://github.com/FilippoPiumatti/ELIB">
+    <img src="libro.jfif" alt="Logo" width="80" height="80">
+  </a>
 
 
 <!-- CONTRIBUTING -->
