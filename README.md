@@ -23,7 +23,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+
 
 
 
@@ -82,7 +82,6 @@
 <!-- ABOUT THE PROJECT -->
 ## Sul progetto
 
-[![Product Name Screen Shot][product-screenshot]](https://google.com)
 
 Questo progetto è partito agli inizi di marzo, in realtà volevamo sviluppare una web app sui servizi di E-COMMERCE
 sempre sull' argomento dei libri, sviluppare un commercio di libri online.
