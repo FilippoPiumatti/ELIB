@@ -48,8 +48,10 @@ $(() => {
             let Reg = sendRequestNoCallback("/api/registrati", "POST", { username2: username, email: email, password2: pwd });
             Reg.fail(function (jqXHR) {
                 $(".msg").html("Error: " + jqXHR.status + " - " + jqXHR.responseText).css({ color: "#a00", "marginBottom": "10px" });
+                console.log($(".msg").text())
             });
             Reg.done(function (serverData) {
+                console.log("done")
                 $("#doneRegModal").modal("show");
                 window.location.href = "login.html";
             });
@@ -66,16 +68,7 @@ $(() => {
             $("#myModal").modal("show")
             $(".msg").text("Email invalida").css({ color: "#a00", "marginBottom": "10px" })
 
-        } else if(!regPwd.test(pwd)) {
-            $("#myModal").modal("show")
-            $(".msg").text("Password troppo semplice, guarda che rispetti i seguenti canoni: "
-                + "Almeno una cifra [0-9], " 
-                + "Almeno un carattere minuscolo [a-z], " 
-                + "Almeno un carattere maiuscolo [A-Z], " 
-                + "Almeno un carattere speciale tra questi: [*.!@#$%^&(){}[]:;<>,.?/~_+-=|\] e che sia di " 
-                + "Almeno 8 caratteri di lunghezza, ma non più di 32.")
-                .css({ color: "#a00", "marginBottom": "10px" })
-        }
+        } 
 
     })
 });

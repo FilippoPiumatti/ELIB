@@ -26,7 +26,7 @@ $(document).ready(function () {
         "height": "auto",
         "margin": "0px auto",
         "margin-bottom": "10px",
-        "margin-left": "460px"
+        
       })
       let div = $("<div class 'row'>");
       let div2 = $("<div class='card-body'>");
@@ -38,7 +38,7 @@ $(document).ready(function () {
         "color": "black",
         "font-weight":"bold"
       })
-      let p = $("<p class='card-text'style=' margin-top:20px; margin-left: 30px; font-weight:bold; color:black '  >");
+      let p = $("<p class='card-text'style=' margin-top:20px; margin-left:30px;  font-weight:bold; color:black '  >");
 
       let footer = $("<div class = 'card-footer text-muted'>");
       let btnTest = $("<button class='btn btn-primary'>");
