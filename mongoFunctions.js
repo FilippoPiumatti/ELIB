@@ -50,6 +50,71 @@ mongoFunctions.prototype.getUser = function (req, nomeDb, collection, query, cal
     });
 }
 
+mongoFunctions.prototype.getProfile = function(req, nomeDb, collection, query, callback){
+    setConnection(nomeDb, collection, function(errConn, coll, conn){
+        if (errConn.codeErr == -1) {
+            let dataUser = coll.find(query);
+            dataUser.then(function (data) {
+                conn.close();
+                let errData;
+                if (data == null)
+
+                    errData = { codeErr: 401, message: "no utenti available" };
+                else {
+                    errData = { codeErr: -1, message: "" };
+                }
+                callback(errData, data);
+            });
+            dataLogin.catch((err) => {
+                let errQuery = { codeErr: 500, message: "Errore durante l'esecuzione della query" };
+                callback(errQuery, {});
+            });
+        } else
+            callback(errConn, {});
+    })
+}
+
+mongoFunctions.prototype.updateUsername = function (req, nomeDb, collection,query, callback) {
+    setConnection(nomeDb, collection, function (errConn, coll, conn) {
+        if (errConn.codeErr == -1) {
+            let dataUser = coll.updateOne(query);
+            //db.players.updateOne({_id:11,"infortuni.anno":2012,"infortuni.tipo":"gomito"},{$set:{"infortuni.$.mesi_out":0}})
+            dataUser.then(function (data) {
+                conn.close();
+                let errData;
+                
+                callback(errData, data);
+            });
+            dataUser.catch((err) => {
+                let errQuery = { codeErr: 500, message: "Errore durante l'esecuzione della query" };
+                callback(errQuery, {});
+            });
+            
+        } else
+            callback(errConn, {});
+    });
+}
+
+mongoFunctions.prototype.elencoPost=function (req,nomeDb,collection,callback){
+    setConnection(nomeDb,collection,function (errConn,coll,conn){
+        if(errConn.codeErr==-1){
+            let domande = coll.find().toArray();
+            domande.then(function (data){
+                conn.close();
+                let errData =  {codeErr:200, message: "ok ava"}
+                if(data==null)
+                    errData = {codeErr:401, message: "Errore estrapolazione domande"};
+                callback(errData,data);
+            });
+            domande.catch((err)=>{
+                let errQuery = {codeErr: 500, message: "Errore durante l'esecuzione della query"};
+                callback(errQuery,{});
+            });
+        }else
+            callback(errConn,{});
+    });
+}
+
 
 mongoFunctions.prototype.getPosts = function (req, nomeDb, collection, query, callback) {
     setConnection(nomeDb, collection, function (errConn, coll, conn) {
@@ -117,6 +182,32 @@ mongoFunctions.prototype.findMail = function (req, nomeDb, collection, query, ca
                 else
                     errData = { codeErr: -1, message: "Mail presente", mail:data };
                     errData = { codeErr: -1, message: "Mail presente", elencoDomande: data };
+               
+                callback(errData, data);
+            });
+            dataMail.catch((err) => {
+                let errQuery = { codeErr: 500, message: "Errore durante l'esecuzione della query" };
+                callback(errQuery, {});
+            });
+            
+        } else
+            callback(errConn, {});
+    });
+}
+
+mongoFunctions.prototype.findPost = function (req, nomeDb, collection, query, callback) {
+    setConnection(nomeDb, collection, function (errConn, coll, conn) {
+        if (errConn.codeErr == -1) {
+            let dataMail = coll.findOne(query);
+            dataMail.then(function (data) {
+                conn.close();
+                let errData;
+                if (data == null)
+                    errData = { codeErr: 401, message: "Errore" };   
+                else
+                    errData = { codeErr: -1, message: "Ok!", mail:data };
+                    errData = { codeErr: -1, message: "Ok!", elencoDomande: data };
+                    console.log(errData)
                
                 callback(errData, data);
             });

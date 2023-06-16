@@ -42,6 +42,8 @@ app.use(function (req, res, next) {
 
 app.use(express.static("static"));
 
+
+
 app.post("/api/login", function (req, res) {
     let query = { user: req.body.username };
     mongoFunctions.findLogin(req, "ports", "users", query, function (err, data) {
@@ -56,32 +58,51 @@ app.post("/api/login", function (req, res) {
     });
 });
 
+app.post("api/getProfileData", function (req, res) {
+    let query = { user: req.body, userServer }
+    mongoFunctions.getProfile(req, "ports", "users", function (err, data) {
+        console.log(err);
+
+        if (err.codeErr == 200) {
+            res.send({ msg: "profile", domande: data })
+        }
+        else
+            error(req, res, { code: 401, message: "errore profile" });
+
+    });
+})
+
+app.post("/api/updateProfile", function (req, res) {
+    let query = {
+        nome: req.body.nome,
+        cognome: req.body.cognome,
+        numero: req.body.cell,
+        mail: req.body.email,
+        citta: req.body.citta,
+        indirizzo: req.body.indirizzo
+    }
+    mongoFunctions.updateUsername(req, "ports", "users", function (err, data) {
+        if (err.codeErr == -1) {
+            console.log("Update OK");
+            tokenAdministration.createToken(data);
+            
+            res.send({mail: req.body.email });
+        }
+        else
+            error(req, res, { code: err.codeErr, message: err.message });
+    });
+});
+
 
 app.post("/api/controlloMail", function (req, res) {
-    let query = { email: req.body.mail };
-    
+    let query = { user: req.body.user };
+
     mongoFunctions.findMail(req, "ports", "users", query, function (err, data) {
         if (err.codeErr == -1) {
             console.log("Login OK");
             tokenAdministration.createToken(data);
             console.log("tokenAdministration.token = " + tokenAdministration.token);
-            res.send({ msg: "Mail OK", token: tokenAdministration.token,mail:req.body.mail });
-        }
-        else
-            error(req, res, { code: err.codeErr, message: err.message });
-    });
-});
-
-app.post("/api/resetPassword", function (req, res) {
-    let email = { email: req.body.mail };
-    let newPassword={ password: req.body.password };
-    
-    mongoFunctions.updatePassword(req, "ports", "users", email,newPassword, function (err, data) {
-        if (err.codeErr == -1) {
-            console.log("Update OK");
-            tokenAdministration.createToken(data);
-            console.log("tokenAdministration.token = " + tokenAdministration.token);
-            res.send({ msg: "Mail OK", token: tokenAdministration.token,mail:req.body.mail });
+            res.send({ msg: "Mail OK", token: tokenAdministration.token, mail: req.body.mail });
         }
         else
             error(req, res, { code: err.codeErr, message: err.message });
@@ -89,20 +110,11 @@ app.post("/api/resetPassword", function (req, res) {
 });
 
 
-app.get("/api/getUser", function (req, res) {
-    mongoFunctions.findLogin(req, "ports", "users", {}, function (err, data) {
-        if (err.codeErr == -1) {
-            console.log("ELENCO USERS: ");
-            res.send({ msg: "Login OK"});
-        }
-        else
-            error(req, res, { code: err.codeErr, message: err.message });
-    });
-});
+
 
 
 app.post("/api/registrati", function (req, res) {
-    let query = { email: req.body.email , user: req.body.username2 ,pwd: req.body.password2, PushNotification: false };
+    let query = { email: req.body.email, user: req.body.username2, pwd: req.body.password2, PushNotification: false };
     mongoFunctions.registrati(req, "ports", "users", query, function (err, data) {
         if (err.codeErr == -1) {
             res.send(data);
@@ -112,10 +124,22 @@ app.post("/api/registrati", function (req, res) {
     });
 });
 
+app.post("/api/SearchPosts", function (req, res) {
+
+    let query = { type: req.body.typeModal };
+    mongoFunctions.findPost(req, "ports", "posts", query, function (err, data) {
+        if (err.codeErr == -1) {
+            res.send({ msg: "elenco post", domande: data })
+        }
+        else
+            error(req, res, { code: err.codeErr, message: err.message });
+    });
+});
+
 app.post("/api/posts", function (req, res) {
-    
-    let query = {idPost : i, user: req.body.userModal , type: req.body.typeModal ,content: req.body.contentModal };
-    mongoFunctions.registrati(req, "ports", "posts", query, function (err, data) {
+
+    let query = { idPost: i, user: req.body.userModal, type: req.body.typeModal, content: req.body.contentModal };
+    mongoFunctions.posts(req, "ports", "post", query, function (err, data) {
         if (err.codeErr == -1) {
             res.send({ msg: "ok" });
         }
@@ -125,16 +149,21 @@ app.post("/api/posts", function (req, res) {
     i++;
 });
 
-app.post("api/getPosts",function(req,res){
-    let query = {};
-    mongoFunctions.getPosts(req, "ports", "posts", query, function (err, data){
-        if (err.codeErr == -1) {
-            res.send({msg:"elenco post",domande: data})
+
+app.post("/api/elencoPost", function (req, res) {
+
+    mongoFunctions.elencoPost(req, "ports", "post", function (err, data) {
+        console.log(err);
+
+        if (err.codeErr == 200) {
+            res.send({ msg: "elenco post", domande: data })
         }
-    })
-});
+        else
+            error(req, res, { code: 401, message: "errore postsss" });
 
 
+    });
+})
 
 
 function error(req, res, err) {
