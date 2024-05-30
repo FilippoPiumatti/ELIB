@@ -40,10 +40,10 @@ $(() => {
         let pwd = $("input[name=passwordReg]").val();
         let regUser = /^[a-zA-Z0-9]+$/;
         let regEmail = new RegExp('[a-z0-9]+@[a-z]+\.[a-z]{2,3}');
-        let regPwd = new RegExp('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]).{8,32}$')
+        let regPwd = new RegExp('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[*.!@$%^&(){}[]:;<>,.?/~_+-=|\]).{8,32}$') //NON FUNZIONA!
 
         console.log(pwd)
-        if ($("#confPass").val() == pwd && regUser.test(username) && regEmail.test(email) && regPwd.test(pwd)) {
+        if ($("#confPass").val() == pwd && regUser.test(username) && regEmail.test(email)) { //regPwd.test(pwd) condizione da rimettere quando hai trovato una nuova regex
             $(".msg").hide();
             let Reg = sendRequestNoCallback("/api/registrati", "POST", { username2: username, email: email, password2: pwd });
             Reg.fail(function (jqXHR) {
